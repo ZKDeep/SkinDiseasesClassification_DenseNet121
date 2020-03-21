@@ -63,28 +63,28 @@ def data_gen(path, desired_size, no_channels, batch_size, shuffle):
         y = np.append(y,classes[img])
         #y.append(classes[img]) 
         batch = batch + 1
-        try:
-            if batch == batch_size:
-                #print(y)
-                y = y.astype(int)
-                n_values = np.max(classes) + 1
-                batch = 0
-                y = np.eye(n_values)[y]
-                xx.append(x)
-                yy.append(y)
-                
-                y = np.zeros((0))
-                x = np.zeros((0,desired_size[0], desired_size[1], no_channels))
-                xx = np.array(xx)
-                xx = xx.astype(np.float32)
-                
-                yy = np.array(yy)
-                yy = yy.astype(np.float32)
-                yy = yy.reshape(yy.shape[1], yy.shape[2])
-                xx = xx.reshape(xx.shape[1], xx.shape[2], xx.shape[3], xx.shape[4])
-                yield(xx, yy)
-        except:
-            continue
+        #try:
+        if batch == batch_size:
+            #print(y)
+            y = y.astype(int)
+            n_values = np.max(classes) + 1
+            batch = 0
+            y = np.eye(n_values)[y]
+            xx.append(x)
+            yy.append(y)
+            
+            y = np.zeros((0))
+            x = np.zeros((0,desired_size[0], desired_size[1], no_channels))
+            xx = np.array(xx)
+            xx = xx.astype(np.float32)
+            
+            yy = np.array(yy)
+            yy = yy.astype(np.float32)
+            yy = yy.reshape(yy.shape[1], yy.shape[2])
+            xx = xx.reshape(xx.shape[1], xx.shape[2], xx.shape[3], xx.shape[4])
+            yield(xx, yy)
+        #except:
+         #   continue
        
 #
 #def valid_data_gen(path, desired_size, no_channels, batch_size, shuffle):   
