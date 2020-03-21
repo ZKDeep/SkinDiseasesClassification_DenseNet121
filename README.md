@@ -13,8 +13,8 @@ There is configuration file name "input_config.py" made changes in it according 
 Run "train.py" file using any tool spyder or cmd
 It will start training and saving best weights in "wieghts.h5" based on minium loss of validation dataset.
 Try to Run the training model for 40 to 50 epochs.
-You can change epochs in "input_config.py"
-I got 89% accuracy on the given dataset.
+You can change epochs in "input_config.py".
+# I got 89% accuracy on the given dataset.
 
 # Test the Model
 In order to to check the accuracy of model on Test set just
