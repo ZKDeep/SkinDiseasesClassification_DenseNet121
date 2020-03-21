@@ -11,7 +11,7 @@ import model
 import input_config
 import generator1
 from os import walk
-
+from keras.callbacks import ModelCheckpoint
 
 epochs = input_config.epochs
 train_path = input_config.trian_path
@@ -44,28 +44,20 @@ except:
     pass
 
 
+SavingWeights = ModelCheckpoint('weights.h5', save_weights_only=True, verbose=1, save_best_only=True)
 
-for epoch in range(epochs):   
-    try:
-        print(".....")
-        print(".....")
-        print(".....")
-        print(".....")
-        print("epoch No=====>" + str(epoch))
-        train_batches = generator1.data_gen(train_path, desired_size, no_channels, batch_size, shuffle)
-        valid_batches = generator1.data_gen(valid_path, desired_size, no_channels, batch_size, shuffle)
-        
-        hist = model.fit_generator(train_batches, steps_per_epoch=np.floor(t_files/batch_size),
-                           epochs =1, verbose=1, shuffle =True)
-        print("validating====>")
-        evl = model.evaluate_generator(valid_batches, steps=np.floor(v_files/batch_size), verbose=1 )
-        
-        new_los = evl[0]
-        print("validation loss====>" + str(evl[0]))
-        
-        if new_los < los:
-            print("Saving best weights")
-            model.save_weights("weights.h5")
-            los = new_los
-    except:
-        continue
+for epoch in range(epochs):
+    print("Running Epoch No==>  " + str(epoch))
+    train_batches = generator1.data_gen(train_path, desired_size, no_channels, batch_size, shuffle)
+    valid_batches = generator1.data_gen(valid_path, desired_size, no_channels, batch_size, shuffle)
+    
+    hist = model.fit_generator(train_batches, steps_per_epoch=np.floor(t_files/batch_size),
+                       epochs = 1, verbose=1, shuffle =True)
+    l = model.evaluate_generator(valid_batches, steps=np.floor(v_files/batch_size),
+                       verbose=1)
+    new_los = l[0]
+    print("validation loss==> " + str(l[0]) + "  validation Accuracy==>  " + str(l[1]))
+    if new_los < los:
+        print("saving Weights")
+        model.save_weights('weights.h5')
+        los = new_los  
