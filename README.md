@@ -20,3 +20,5 @@ Run "evalute.py" and you will get test loss and accuracy accordingly on given sa
 
 It's all About it.
 Dataset is avialble in the link given below
+
+https://drive.google.com/drive/folders/1wX5mjP7gAj3wW8OrTQAwXo328_OFHvwm?usp=sharing
