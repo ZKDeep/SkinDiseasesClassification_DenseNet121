@@ -47,6 +47,10 @@ except:
 
 for epoch in range(epochs):   
     try:
+        print(".....")
+        print(".....")
+        print(".....")
+        print(".....")
         print("epoch No=====>" + str(epoch))
         train_batches = generator1.data_gen(train_path, desired_size, no_channels, batch_size, shuffle)
         valid_batches = generator1.data_gen(valid_path, desired_size, no_channels, batch_size, shuffle)
