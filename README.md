@@ -12,6 +12,8 @@ To train model on skin diseases you have train, valid and test directory of imag
 There is configuration file name "input_config.py" made changes in it according to your use.
 Run "train.py" file using any tool spyder or cmd
 It will start training and saving best weights in "wieghts.h5" based on minium loss of validation dataset.
+Try to Run the training model for 40 to 50 epochs.
+You can change epochs in "input_config.py"
 
 # Test the Model
 In order to to check the accuracy of model on Test set just
