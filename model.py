@@ -18,13 +18,16 @@ def model():
     preds=Dense(n_classes,activation='softmax', name='output_layer_last')(new_model) #final layer with softmax activation
     
     model=Model(inputs=dense121.input,outputs=preds)
-    
-    for i,layer in enumerate(model.layers):
-      print(i,layer.name)
-    
+        
     for layer in model.layers:
         layer.trainable=True
     model.compile(optimizer='SGD',loss='categorical_crossentropy',metrics=['accuracy'])
+    
+    print("..")
+    print("....")
+    print(".....")
+    print("......")
+    print("........")
     
     return(model)
 
